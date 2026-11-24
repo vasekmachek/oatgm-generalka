@@ -12,8 +12,9 @@
   color-scheme: light;
 }
 
+/* Tmavé barvy: podle telefonu, dokud si uživatel nevybere sám přepínačem. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-rezim="svetly"]) {
     --bg: #10161d;
     --card: #19212b;
     --ink: #e7ecf3;
@@ -26,6 +27,20 @@
     --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 25%);
     color-scheme: dark;
   }
+}
+
+:root[data-rezim="tmavy"] {
+  --bg: #10161d;
+  --card: #19212b;
+  --ink: #e7ecf3;
+  --muted: #aeb8c6;
+  --line: #2e3a48;
+  --accent: #c48be6;
+  --accent-ink: #1a0d22;
+  --accent-soft: #2a1f35;
+  --error: #ff8a80;
+  --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 25%);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -64,6 +79,24 @@ h1 {
 }
 
 .popis { color: var(--muted); margin: 0 auto; max-width: 36ch; }
+
+.prepinac-rezimu {
+  margin-top: 14px;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  min-height: 44px;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+
+.prepinac-rezimu:hover { border-color: var(--accent); }
+.prepinac-rezimu:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: 0 0 0 4px var(--accent-soft); }
 
 .karta {
   background: var(--card);
