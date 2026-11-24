@@ -2,6 +2,7 @@ import "./style.css";
 import { APP } from "./app";
 import { formatujKc, nactiCenu, nactiDny, spocitejUtratu, vetaSrovnani } from "./vypocet";
 import { nactiZadani, ulozZadani } from "./uloziste";
+import { TYPY_SVACIN, najdiTypPodleId, popisekTypu, typPodleCeny } from "./typy";
 import { nactiRezim, prepniRezim, textTlacitka, ulozRezim, vyberRezim, type Rezim } from "./rezim";
 
 const $ = <T extends Element>(sel: string) => document.querySelector<T>(sel)!;
@@ -45,9 +46,37 @@ function ukazChybu(text: string | null): void {
   cenaInput.setAttribute("aria-invalid", text === null ? "false" : "true");
 }
 
+// Typy svačin: tlačítka, která doplní cenu
+const typyObal = $<HTMLDivElement>("#typy");
+for (const typ of TYPY_SVACIN) {
+  const tlacitko = document.createElement("button");
+  tlacitko.type = "button";
+  tlacitko.className = "typ";
+  tlacitko.dataset.typ = typ.id;
+  tlacitko.textContent = popisekTypu(typ);
+  tlacitko.setAttribute("aria-pressed", "false");
+  typyObal.append(tlacitko);
+}
+
+typyObal.addEventListener("click", (e) => {
+  const tlacitko = (e.target as Element).closest<HTMLButtonElement>("button[data-typ]");
+  const typ = tlacitko ? najdiTypPodleId(tlacitko.dataset.typ ?? "") : null;
+  if (!typ) return;
+  cenaInput.value = String(typ.cena);
+  prepocitej(true);
+});
+
+function zvyrazniTyp(cena: number | null): void {
+  const aktivni = cena === null ? null : typPodleCeny(cena);
+  typyObal.querySelectorAll<HTMLButtonElement>("button[data-typ]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.dataset.typ === aktivni?.id));
+  });
+}
+
 function prepocitej(ulozit: boolean): void {
   const cena = nactiCenu(cenaInput.value);
   const dny = nactiDny(vybraneDny());
+  zvyrazniTyp(cena.ok ? cena.hodnota : null);
 
   // Prázdné políčko není chyba, jen ještě nic nezadal/a.
   const prazdne = cenaInput.value.trim() === "";

@@ -118,6 +118,29 @@ h1 {
   padding: 0;
 }
 
+.typy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.typ {
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 8px;
+  min-height: 48px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.typ:hover { border-color: var(--accent); }
+.typ[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.typ:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: 0 0 0 4px var(--accent-soft); }
+
 .vstup-obal { position: relative; }
 
 #cena {
