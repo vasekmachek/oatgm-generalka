@@ -2,8 +2,26 @@ import "./style.css";
 import { APP } from "./app";
 import { formatujKc, nactiCenu, nactiDny, spocitejUtratu, vetaSrovnani } from "./vypocet";
 import { nactiZadani, ulozZadani } from "./uloziste";
+import { nactiRezim, prepniRezim, textTlacitka, ulozRezim, vyberRezim, type Rezim } from "./rezim";
 
 const $ = <T extends Element>(sel: string) => document.querySelector<T>(sel)!;
+
+// Tmavý režim
+const prepinacRezimu = $<HTMLButtonElement>("#prepinac-rezimu");
+const systemTmavy = window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+let rezim: Rezim = vyberRezim(nactiRezim(localStorage), systemTmavy);
+
+function pouzijRezim(): void {
+  document.documentElement.dataset.rezim = rezim;
+  prepinacRezimu.textContent = textTlacitka(rezim);
+}
+
+prepinacRezimu.addEventListener("click", () => {
+  rezim = prepniRezim(rezim);
+  ulozRezim(localStorage, rezim);
+  pouzijRezim();
+});
+pouzijRezim();
 
 $<HTMLHeadingElement>("#name").textContent = APP.name;
 $<HTMLParagraphElement>("#tagline").textContent = APP.tagline;

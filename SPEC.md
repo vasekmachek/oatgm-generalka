@@ -14,17 +14,18 @@ Studenti obchodní akademie, kteří si cestou do školy kupují svačinu nebo k
 2. **Výpočet za týden, měsíc a školní rok:** Aplikace hned ukáže tři částky. Školní rok počítá jako 40 týdnů a měsíc jako 4 týdny.
 3. **Srovnání, co by sis za to mohl/a koupit:** Pod roční částkou se objeví jednoduchá věta, třeba „To je jako 3 páry tenisek po 1 500 Kč“, s jedním pevně daným příkladem.
 4. **Uložení posledního zadání:** Když aplikaci zavřeš a znovu otevřeš, tvoje čísla tam pořád budou.
+5. **Tmavý režim:** Tlačítkem pod nadpisem přepneš mezi světlým a tmavým vzhledem. Bez volby se aplikace řídí nastavením telefonu a tvoje volba se zapamatuje.
 
 ## Obrazovky
 
-- Nahoře nadpis a krátká věta, k čemu aplikace je
+- Nahoře nadpis a krátká věta, k čemu aplikace je, pod ní tlačítko pro tmavý/světlý režim
 - Formulář se dvěma políčky (cena svačiny, počet dní v týdnu)
 - Karta s výsledky: týden, měsíc a školní rok, roční částka velkým písmem
 - Řádek se srovnáním (kolik tenisek by to bylo)
 
 ## Data
 
-Do localStorage se pod jedním klíčem ukládá jen poslední zadání jako JSON: cena svačiny a počet dní v týdnu, například {"cena": 45, "dny": 5}. Při spuštění se načte a výsledky se hned spočítají. Nic jiného se neukládá a nic se neodesílá.
+Do localStorage se pod jedním klíčem ukládá jen poslední zadání jako JSON: cena svačiny a počet dní v týdnu, například {"cena": 45, "dny": 5}. Při spuštění se načte a výsledky se hned spočítají. Pod druhým klíčem se ukládá zvolený režim vzhledu („svetly“ nebo „tmavy“). Nic jiného se neukládá a nic se neodesílá.
 
 ## Co v první verzi nebude
 
