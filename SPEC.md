@@ -15,10 +15,12 @@ Studenti obchodní akademie, kteří si cestou do školy kupují svačinu nebo k
 3. **Srovnání, co by sis za to mohl/a koupit:** Pod roční částkou se objeví jednoduchá věta, třeba „To je jako 3 páry tenisek po 1 500 Kč“, s jedním pevně daným příkladem.
 4. **Uložení posledního zadání:** Když aplikaci zavřeš a znovu otevřeš, tvoje čísla tam pořád budou.
 5. **Tmavý režim:** Tlačítkem pod nadpisem přepneš mezi světlým a tmavým vzhledem. Bez volby se aplikace řídí nastavením telefonu a tvoje volba se zapamatuje.
+6. **Typy svačin:** Nad cenou jsou tlačítka s hotovými typy (rohlík 25 Kč, croissant 35 Kč, kafe 45 Kč, bageta 65 Kč). Klepnutím se cena doplní sama, vlastní cenu jde pořád napsat. Tlačítko se zvýrazní, když cena odpovídá danému typu.
 
 ## Obrazovky
 
 - Nahoře nadpis a krátká věta, k čemu aplikace je, pod ní tlačítko pro tmavý/světlý režim
+- Tlačítka s typy svačin, která doplní cenu
 - Formulář se dvěma políčky (cena svačiny, počet dní v týdnu)
 - Karta s výsledky: týden, měsíc a školní rok, roční částka velkým písmem
 - Řádek se srovnáním (kolik tenisek by to bylo)
