@@ -3,13 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Appka, kterou postavila třída</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Spočítej, kolik tě svačiny stojí za týden, měsíc a školní rok." />
+    <title>Svačinometr</title>
   </head>
   <body>
-    <main>
-      <p class="eyebrow">Ekonomický den · OATGM</p>
-      <h1 id="name">Zatím bez názvu</h1>
-      <p id="tagline"></p>
+    <main class="app">
+      <header class="hlavicka">
+        <p class="eyebrow">Ekonomický den · OATGM</p>
+        <h1 id="name">Svačinometr</h1>
+        <p id="tagline" class="popis"></p>
+      </header>
+
+      <form id="formular" class="karta formular" novalidate>
+        <div class="pole">
+          <label for="cena">Cena jedné svačiny</label>
+          <div class="vstup-obal">
+            <input
+              id="cena"
+              name="cena"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              placeholder="např. 45"
+              aria-describedby="cena-chyba"
+            />
+            <span class="jednotka" aria-hidden="true">Kč</span>
+          </div>
+          <p id="cena-chyba" class="chyba" role="alert" hidden></p>
+        </div>
+
+        <fieldset class="pole">
+          <legend>Kolikrát týdně si ji kupuješ?</legend>
+          <div class="dny" id="dny">
+            <label><input type="radio" name="dny" value="1" /><span>1</span></label>
+            <label><input type="radio" name="dny" value="2" /><span>2</span></label>
+            <label><input type="radio" name="dny" value="3" /><span>3</span></label>
+            <label><input type="radio" name="dny" value="4" /><span>4</span></label>
+            <label><input type="radio" name="dny" value="5" checked /><span>5</span></label>
+          </div>
+          <p class="napoveda">dní v týdnu</p>
+        </fieldset>
+      </form>
+
+      <section class="karta vysledky" aria-labelledby="vysledky-nadpis" aria-live="polite">
+        <h2 id="vysledky-nadpis" class="vysledky-nadpis">Za školní rok utratíš</h2>
+        <p class="rok" id="rok">0 Kč</p>
+        <p class="srovnani" id="srovnani">Zadej cenu svačiny a uvidíš.</p>
+        <dl class="mrizka">
+          <div class="bunka">
+            <dt>Za týden</dt>
+            <dd id="tyden">0 Kč</dd>
+          </div>
+          <div class="bunka">
+            <dt>Za měsíc</dt>
+            <dd id="mesic">0 Kč</dd>
+          </div>
+        </dl>
+        <p class="poznamka">Měsíc = 4 týdny, školní rok = 40 týdnů.</p>
+      </section>
+
+      <footer class="paticka">Čísla zůstávají jen v tvém telefonu.</footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
